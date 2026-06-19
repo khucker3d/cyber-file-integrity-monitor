@@ -1,4 +1,4 @@
-# File Integrity Monitor (V1)
+# (WIP) File Integrity Monitor: V1
 
 A Python GUI-based File Integrity Monitor for detecting, reviewing, and responding to file changes.
 
