@@ -20,13 +20,15 @@ The File Integrity Monitor is a GUI-based tool that locally monitors a selected 
 * Polling backup every 2 seconds
 * Cross-platform support for Windows, macOS, and Linux
 
-
 ## [How To:](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/How%20To.md)
 
 _**Admin/root Notes:**_
-_* Normal user permissions are usually enough for monitoring files inside your own project folder._
-_* Admin/root permissions may be required if monitoring protected system directories._
-_* Do not run as admin/root unless the monitored path requires it._
+
+ _ * Normal user permissions are usually enough for monitoring files inside your own project folder._
+ 
+ _ * Admin/root permissions may be required if monitoring protected system directories._
+ 
+ _ * Do not run as admin/root unless the monitored path requires it._
 
 ## Trusted Baseline Workflow
 * The baseline is the known-good state.
