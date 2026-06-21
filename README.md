@@ -4,111 +4,84 @@
 The File Integrity Monitor is a GUI-based tool that locally monitors a selected folder, creates a trusted baseline, detects file changes using SHA-256 hashes, displays readable diffs for text files, and provides analyst response options such as approve, revert, overwrite, and review notes.
 
 ## Features
-- Create a trusted file baseline
-- Detect added, modified, and removed files
-- SHA-256 hash comparison
-- Text diff output for readable files
-- Changed values highlighted in red
-- Dashboard counters for added, removed, and modified files
-- Approve Changes workflow
-- Revert Changes workflow
-- Universal Overwrite Data workflow
-- Add Review Note workflow
-- Clickable file paths in the event log
-- Open the selected file using the default operating system application
-- Watchdog event monitoring
-- Polling backup every 2 seconds
-- Cross-platform support for Windows, macOS, and Linux
+* Create a trusted file baseline
+* Detect added, modified, and removed files
+* SHA-256 hash comparison
+* Text diff output for readable files
+* Changed values highlighted in red
+* Dashboard counters for added, removed, and modified files
+* Approve Changes workflow
+* Revert Changes workflow
+* Universal Overwrite Data workflow
+* Add Review Note workflow
+* Clickable file paths in the event log
+* Open the selected file using the default operating system application
+* Watchdog event monitoring
+* Polling backup every 2 seconds
+* Cross-platform support for Windows, macOS, and Linux
 
 ## Requirements
-- Download Python [script](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/file_integrity_monitor.py)
-- Verify/Install dependencies:
-   - ```pip install watchdog```
-   - ```pip install tkinter```  
+* Download the Python [script](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/file_integrity_monitor.py)
+* Verify/Install dependencies:
+   * ```pip install watchdog```
+   * ```pip install tkinter```  
       _On some Linux distributions, Tkinter may need to be installed separately:_ ```sudo apt install python3-tk```
-- Ensure all data files are updated and approved before using the tool
+* Ensure all data files are updated and approved before using the tool
 
 _**Admin/root Notes:**_
-_- Normal user permissions are usually enough for monitoring files inside your own project folder._
-_- Admin/root permissions may be required if monitoring protected system directories._
-_- Do not run as admin/root unless the monitored path requires it._
-
-## How To:
-1. Create a new folder called **"watched"** in the location best suited for use
-2. Add the files that will be monitored under the **"watched"** folder
-   <img width="500" height="273" alt="1_SetupWatchFolderAndAddFile" src="https://github.com/user-attachments/assets/eb0e7173-4a83-40ea-928c-4fbfb9437c6f" />
-
-3. Run the app:
-   - Windows Power Shell:```python file_integrity_monitor.py```
-   - Mac/Linux Terminal:```python3 file_integrity_monitor.py```
-   <img width="538" height="335" alt="2_RunTool_PyCharm" src="https://github.com/user-attachments/assets/1dfe5423-b0f7-4eac-8879-189e7e5e574d" />
-
-_**Note:** I used PyCharm's Run function to test this tool_
-
-4. Click Create Baseline and verify by reviewing.
-   <img width="441" height="35" alt="4_BaselineCreated" src="https://github.com/user-attachments/assets/f1333378-f22a-467b-af45-878c80336992" />
-
-5. Click Start Monitoring.
-   <img width="899" height="409" alt="5_StartMonitering" src="https://github.com/user-attachments/assets/1e7d4e82-a934-43e0-9df0-3e9bd1e06ebc" />
-
-6. When the tool reports a modification, addition, or deletion of a file in the watched folder, the changes will appear in red text.
-   <img width="757" height="609" alt="6_ChangesAlert" src="https://github.com/user-attachments/assets/74b41449-76f2-41cb-ab1b-cee4e711679f" />
-
-7. Review the event log.
-8. Choose a response action:
-   - Approve: Only approve changes through written authorization. 
-   - Revert: This will revert all changes to the baseline
-   - Overwrite: Best for individual changes
-   - Add Review Note _(Output Console)_: This should be applied for all actions
+_* Normal user permissions are usually enough for monitoring files inside your own project folder._
+_* Admin/root permissions may be required if monitoring protected system directories._
+_* Do not run as admin/root unless the monitored path requires it._
 
 ## Trusted Baseline Workflow
-- The baseline is the known-good state.
-- The app saves the trusted baseline to: ```fim_baseline.json```
+* The baseline is the known-good state.
+* The app saves the trusted baseline to: ```fim_baseline.json```
 
 **The baseline includes:**
-- File path
-- SHA-256 hash
-- Text snapshot when readable
-- File size
-- Modified timestamp
+* File path
+* SHA-256 hash
+* Text snapshot when readable
+* File size
+* Modified timestamp
+
 _**IMPORTANT:** Do not create a baseline after a suspicious change unless you intentionally want to trust that current state._
 
 ## Change Detection
-- The app compares the current folder state against the trusted baseline.
-- It identifies:
-  - [ADDED], [REMOVED], and [MODIFIED]
+* The app compares the current folder state against the trusted baseline.
+* It identifies:
+  * [ADDED], [REMOVED], and [MODIFIED]
       _Modified files are detected when the current SHA-256 hash does not match the trusted baseline hash._
 
 ## Diff Output
-- For readable text files, the app displays a diff.
+* For readable text files, the app displays a diff.
   Example:
   ```
   -Login Pswrd: old_value
   +Login Pswrd: new_value
   ```
-- Only the new changed value is highlighted in red in the GUI.
+* Only the new changed value is highlighted in red in the GUI.
 
 ## Analyst Response Actions
 ### Approve Changes
-- Use this when the detected change is expected and trusted.
-- Approving changes updates the trusted baseline.
+* Use this when the detected change is expected and trusted.
+* Approving changes updates the trusted baseline.
 
 ### Revert Changes
-- Use this when the detected change is unwanted and the previous baseline value is still trusted.
+* Use this when the detected change is unwanted and the previous baseline value is still trusted.
 
 Current V1 revert behavior:
-- Added files are deleted.
-- Removed text files are restored from the baseline snapshot.
-- Modified text files are restored from the baseline snapshot.
+* Added files are deleted.
+* Removed text files are restored from the baseline snapshot.
+* Modified text files are restored from the baseline snapshot.
 
 ### Overwrite Data
-- Use this when neither the old value nor the changed value should be trusted.
-- Example use cases:
-  - Password replacement
-  - API key replacement
-  - Token replacement
-  - Admin flag correction
-  - Configuration value correction
+* Use this when neither the old value nor the changed value should be trusted.
+* Example use cases:
+  * Password replacement
+  * API key replacement
+  * Token replacement
+  * Admin flag correction
+  * Configuration value correction
 
 Example field format:
   ```
@@ -116,21 +89,21 @@ Example field format:
   API Key: suspicious_key
   Admin Rights: Yes
   ```
-- The analyst enters a field label and a replacement value.
-- The replacement value is written to the file but is not logged in the event log or notes file.
+* The analyst enters a field label and a replacement value.
+* The replacement value is written to the file but is not logged in the event log or notes file.
 
 ### Add Review Note
-- Use this to document analyst reasoning.
-- Review notes are saved to:
+* Use this to document analyst reasoning.
+* Review notes are saved to:
   ```
   fim_notes.json
   ```
 Example notes:
 ```
-- Suspicious admin flag change reviewed.
-- Temporary credential replacement completed.
-- Change approved after validation.
-- Unauthorized modification reverted.
+* Suspicious admin flag change reviewed.
+* Temporary credential replacement completed.
+* Change approved after validation.
+* Unauthorized modification reverted.
 ```
 
 ## Open Selected File
@@ -149,10 +122,10 @@ Platform behavior:
   ```
 
 ## Polling Backup
-- Some editors save files using temporary files, delayed writes, or rename operations.
-- To improve reliability, the tool uses both:
-  - Watchdog event monitoring
-  - Polling backup every 2 seconds
+* Some editors save files using temporary files, delayed writes, or rename operations.
+* To improve reliability, the tool uses both:
+  * Watchdog event monitoring
+  * Polling backup every 2 seconds
 
 ## File Structure
   ```
@@ -178,23 +151,23 @@ The JSON files are generated by the tool.
   ```
 
 Reason:
-- `fim_baseline.json` may contain file snapshots.
-- `fim_notes.json` may contain analyst notes.
-- `watched/` may contain test files or sensitive lab data.
+* `fim_baseline.json` may contain file snapshots.
+* `fim_notes.json` may contain analyst notes.
+* `watched/` may contain test files or sensitive lab data.
 
 ## Security Notes
-- This tool is for local lab and educational use.
-- Do not store real production secrets in test files.
-- Replacement values are not logged, but they are still written into the selected file.
-- The baseline file is not cryptographically protected in V1.
-- A future version should add HMAC signing or encryption for baseline integrity.
+* This tool is for local lab and educational use.
+* Do not store real production secrets in test files.
+* Replacement values are not logged, but they are still written into the selected file.
+* The baseline file is not cryptographically protected in V1.
+* A future version should add HMAC signing or encryption for baseline integrity.
 
 ## Known Limitations
-- Binary file restore is not fully supported in V1.
-- RTF files may show raw RTF formatting in diff output.
-- Overwrite Data expects a field/value format using a colon.
-- Baseline files are stored locally as JSON.
-- This is not a production EDR or enterprise file integrity monitoring system.
+* Binary file restore is not fully supported in V1.
+* RTF files may show raw RTF formatting in diff output.
+* Overwrite Data expects a field/value format using a colon.
+* Baseline files are stored locally as JSON.
+* This is not a production EDR or enterprise file integrity monitoring system.
 
 ## Troubleshooting
 ### Changes are not detected
@@ -210,16 +183,16 @@ Click: ```Create Baseline```
 
 ### Open Selected File does not work
 Check:
-- A file path was clicked in the event log.
-- The file still exists.
-- The operating system has a default app for that file type.
+* A file path was clicked in the event log.
+* The file still exists.
+* The operating system has a default app for that file type.
 
 ### Overwrite Data failed
 Check:
-- The file is readable text.
-- The field label exists.
-- The field uses a colon.
-- The label was entered exactly.
+* The file is readable text.
+* The field label exists.
+* The field uses a colon.
+* The label was entered exactly.
 
 Example:
   ```
@@ -227,18 +200,18 @@ Example:
   ```
 
 ## Future Improvement Ideas:
-- Add ignore rules.
-- Add CSV export.
-- Add JSON report export.
-- Add HMAC signing for baseline protection.
-- Add binary backup and restore support.
-- Add suspicious keyword detection.
-- Add severity levels.
-- Add search/filter in the event log.
-- Add packaged builds for Windows, macOS, and Linux.
-- Add Splunk or Wazuh export format.
-- Add unit tests.
-- Add a config file.
+* Add ignore rules.
+* Add CSV export.
+* Add JSON report export.
+* Add HMAC signing for baseline protection.
+* Add binary backup and restore support.
+* Add suspicious keyword detection.
+* Add severity levels.
+* Add search/filter in the event log.
+* Add packaged builds for Windows, macOS, and Linux.
+* Add Splunk or Wazuh export format.
+* Add unit tests.
+* Add a config file.
 
 _This project is designed to demonstrate Blue Team fundamentals in a practical desktop application._
   
