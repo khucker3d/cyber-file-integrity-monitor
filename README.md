@@ -20,13 +20,8 @@ The File Integrity Monitor is a GUI-based tool that locally monitors a selected 
 * Polling backup every 2 seconds
 * Cross-platform support for Windows, macOS, and Linux
 
-## Requirements
-* Download the Python [script](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/file_integrity_monitor.py)
-* Verify/Install dependencies:
-   * ```pip install watchdog```
-   * ```pip install tkinter```  
-      _On some Linux distributions, Tkinter may need to be installed separately:_ ```sudo apt install python3-tk```
-* Ensure all data files are updated and approved before using the tool
+
+## [How To:](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/How%20To.md)
 
 _**Admin/root Notes:**_
 _* Normal user permissions are usually enough for monitoring files inside your own project folder._
