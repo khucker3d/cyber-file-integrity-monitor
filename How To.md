@@ -1,14 +1,13 @@
 # How To: File Integrity Monitor
 
 ## Requirements
-* Download the Python [script](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/file_integrity_monitor.py)
-* Verify/Install dependencies:
+1. Download the Python [script](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/file_integrity_monitor.py)
+2. Verify/Install dependencies:
    * ```pip install watchdog```
    * ```pip install tkinter```  
-      _On some Linux distributions, Tkinter may need to be installed separately:_ ```sudo apt install python3-tk```
-* Ensure all data files are updated and approved before using the tool
+      _**Note:** On some Linux distributions, Tkinter may need to be installed separately:_ ```sudo apt install python3-tk```
+3. Ensure the data file is updated and approved before using the tool
 
-  
 ## How To:
 1. Create a new folder called **"watched"** in the location best suited for use
 2. Add the files that will be monitored under the **"watched"** folder
