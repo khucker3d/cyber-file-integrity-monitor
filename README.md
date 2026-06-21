@@ -1,90 +1,83 @@
-# (WIP) File Integrity Monitor: V1
-
-A Python GUI-based File Integrity Monitor for detecting, reviewing, and responding to file changes.
+# File Integrity Monitor
 
 ## Overview
-File Integrity Monitor V1 is a local cybersecurity portfolio project built with Python and Tkinter.
-
-The tool monitors a selected folder, creates a trusted baseline, detects file changes using SHA-256 hashes, displays readable diffs for text files, and provides analyst response options such as approve, revert, overwrite, and review notes.
-
-This project is designed to demonstrate Blue Team fundamentals in a practical desktop application.
+The File Integrity Monitor is a GUI-based tool that locally monitors a selected folder, creates a trusted baseline, detects file changes using SHA-256 hashes, displays readable diffs for text files, and provides analyst response options such as approve, revert, overwrite, and review notes.
 
 ## Features
-1. Create trusted file baseline
-2. Detect added files
-3. Detect removed files
-4. Detect modified files
-5. SHA-256 hash comparison
-6. Text diff output for readable files
-7. Changed values highlighted in red
-8. Dashboard counters for added, removed, and modified files
-9. Approve Changes workflow
-10. Revert Changes workflow
-11. Universal Overwrite Data workflow
-12. Add Review Note workflow
-13. Clickable file paths in the event log
-14. Open selected file using the default operating system application
-15. Watchdog event monitoring
-16. Polling backup every 2 seconds
-17. Cross-platform support for Windows, macOS, and Linux
-
-## Screenshots - Coming Soon
-- Main GUI
-- Baseline created
-- Modified file detected
-- Diff output with changed values highlighted
-- Clickable file path selected
-- Overwrite Data workflow
-- Review note saved
+- Create a trusted file baseline
+- Detect added, modified, and removed files
+- SHA-256 hash comparison
+- Text diff output for readable files
+- Changed values highlighted in red
+- Dashboard counters for added, removed, and modified files
+- Approve Changes workflow
+- Revert Changes workflow
+- Universal Overwrite Data workflow
+- Add Review Note workflow
+- Clickable file paths in the event log
+- Open the selected file using the default operating system application
+- Watchdog event monitoring
+- Polling backup every 2 seconds
+- Cross-platform support for Windows, macOS, and Linux
 
 ## Requirements
-- Install dependencies: ```pip install watchdog```
-- Tkinter is included with most Python installations.
-- On some Linux distributions, Tkinter may need to be installed separately: ```sudo apt install python3-tk```
+- Download Python [script](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/file_integrity_monitor.py)
+- Verify/Install dependencies:
+   - ```pip install watchdog```
+   - ```pip install tkinter```  
+      _On some Linux distributions, Tkinter may need to be installed separately:_ ```sudo apt install python3-tk```
+- Ensure all data files are updated and approved before using the tool
 
-Admin/root note:
-1. Normal user permissions are usually enough for monitoring files inside your own project folder.
-2. Admin/root permissions may be required if monitoring protected system directories.
-3. Do not run as admin/root unless the monitored path requires it.
+_**Admin/root Notes:**_
+_- Normal user permissions are usually enough for monitoring files inside your own project folder._
+_- Admin/root permissions may be required if monitoring protected system directories._
+_- Do not run as admin/root unless the monitored path requires it._
 
-## How to Run
-1. Download the Python script (link here)
-2. Run the app: ```python file_integrity_monitor.py```
-   Note: Depending on your system, you may need:```python3 file_integrity_monitor.py```
+## How To:
+1. Create a new folder called **"watched"** in the location best suited for use
+2. Add the files that will be monitored under the **"watched"** folder
+   <img width="500" height="273" alt="1_SetupWatchFolderAndAddFile" src="https://github.com/user-attachments/assets/eb0e7173-4a83-40ea-928c-4fbfb9437c6f" />
 
-## Basic Workflow
-1. Open the application.
-2. Select a folder to monitor.
-3. Click Create Baseline.
-4. Click Start Monitoring.
-5. Modify, add, or delete a file in the watched folder.
-6. Review the event log.
-7. Choose a response action:
-   - Approve Changes
-   - Revert Changes
-   - Overwrite Data
-   - Add Review Note
+3. Run the app:
+   - Windows Power Shell:```python file_integrity_monitor.py```
+   - Mac/Linux Terminal:```python3 file_integrity_monitor.py```
+   <img width="538" height="335" alt="2_RunTool_PyCharm" src="https://github.com/user-attachments/assets/1dfe5423-b0f7-4eac-8879-189e7e5e574d" />
+
+_**Note:** I used PyCharm's Run function to test this tool_
+
+4. Click Create Baseline and verify by reviewing.
+   <img width="441" height="35" alt="4_BaselineCreated" src="https://github.com/user-attachments/assets/f1333378-f22a-467b-af45-878c80336992" />
+
+5. Click Start Monitoring.
+   <img width="899" height="409" alt="5_StartMonitering" src="https://github.com/user-attachments/assets/1e7d4e82-a934-43e0-9df0-3e9bd1e06ebc" />
+
+6. When the tool reports a modification, addition, or deletion of a file in the watched folder, the changes will appear in red text.
+   <img width="757" height="609" alt="6_ChangesAlert" src="https://github.com/user-attachments/assets/74b41449-76f2-41cb-ab1b-cee4e711679f" />
+
+7. Review the event log.
+8. Choose a response action:
+   - Approve: Only approve changes through written authorization. 
+   - Revert: This will revert all changes to the baseline
+   - Overwrite: Best for individual changes
+   - Add Review Note _(Output Console)_: This should be applied for all actions
 
 ## Trusted Baseline Workflow
 - The baseline is the known-good state.
 - The app saves the trusted baseline to: ```fim_baseline.json```
 
-The baseline includes:
+**The baseline includes:**
 - File path
 - SHA-256 hash
 - Text snapshot when readable
 - File size
 - Modified timestamp
-
-IMPORTANT: Do not create a baseline after a suspicious change unless you intentionally want to trust that current state.
+_**IMPORTANT:** Do not create a baseline after a suspicious change unless you intentionally want to trust that current state._
 
 ## Change Detection
 - The app compares the current folder state against the trusted baseline.
 - It identifies:
-  - [ADDED]
-  - [REMOVED]
-  - [MODIFIED]
-- Modified files are detected when the current SHA-256 hash does not match the trusted baseline hash.
+  - [ADDED], [REMOVED], and [MODIFIED]
+      _Modified files are detected when the current SHA-256 hash does not match the trusted baseline hash._
 
 ## Diff Output
 - For readable text files, the app displays a diff.
@@ -233,7 +226,6 @@ Example:
   Login Pswrd: value
   ```
 
-
 ## Future Improvement Ideas:
 - Add ignore rules.
 - Add CSV export.
@@ -247,3 +239,6 @@ Example:
 - Add Splunk or Wazuh export format.
 - Add unit tests.
 - Add a config file.
+
+_This project is designed to demonstrate Blue Team fundamentals in a practical desktop application._
+  
