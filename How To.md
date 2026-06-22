@@ -42,9 +42,12 @@ _Doc is WIP_
    <img width="757" height="609" alt="6_ChangesAlert" src="https://github.com/user-attachments/assets/74b41449-76f2-41cb-ab1b-cee4e711679f" />
 
 2. Review the event log and proceed with the appropriate escalation protocol
-3. Once the action is approved, choose the instructed response Action:
 
    <img width="898" height="119" alt="7_ActionsOptions" src="https://github.com/user-attachments/assets/9366c351-0114-4c05-ba0f-fd65ba42495c" />
+  
+3. Once the action is approved, choose the instructed response Action:
+
+   
    
    <img width="528" height="208" alt="8_Opt1_1Revert_All_Change" src="https://github.com/user-attachments/assets/c5cc1592-40ff-4382-99ea-419ad62ad280" />
      
