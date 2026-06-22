@@ -1,55 +1,54 @@
-# How To: File Integrity Monitor 
-_Doc is WIP_
+# How To: File Integrity Monitor (V1)
 
-## Requirements
+## Prep:
 1. Download the Python [script](https://github.com/khucker3d/cyber-file-integrity-monitor/blob/main/file_integrity_monitor.py)
-2. Verify/Install dependencies:
-   * ```pip install watchdog```
-   * ```pip install tkinter```  
-      _**Note:** On some Linux distributions, Tkinter may need to be installed separately:_ ```sudo apt install python3-tk```
-3. Ensure the data file is updated and approved before using the tool
+2. Verify/Install required dependencies via CLI: ```pip install watchdog```
+<img width="566" height="257" alt="Dependencies" src="https://github.com/user-attachments/assets/935c2f73-c11f-446a-bfff-bc4c22bc97e2" />
 
 
-***Admin/root Notes:***
-- *Normal user permissions are usually enough for monitoring files inside your own project folder.*
-- *Admin/root permissions may be required if monitoring protected system directories.*
-- *Do not run as admin/root unless the monitored path requires it.*
+### Create Folder & Add Files:
+1. Create a new folder called **"watched"**
+2. Add the file(s) that will be monitored
+<img width="496" height="139" alt="1_SetupWatchFolderAndAddFile" src="https://github.com/user-attachments/assets/95110f79-2880-49ff-8d57-e67439876993" />
 
 
-## Add Files:
-1. Create a new folder called **"watched"** in the location best suited
-2. Add the file(s) that will be monitored to the **"watched"** folder
+## Using the Tool:
+3. Open the script using the CLI command: 
+   * Power Shell:```python file_integrity_monitor.py```
+   * Terminal:```python3 file_integrity_monitor.py```
 
-   <img width="500" height="273" alt="1_SetupWatchFolderAndAddFile" src="https://github.com/user-attachments/assets/eb0e7173-4a83-40ea-928c-4fbfb9437c6f" />
+### Set Path:
+4. Select the Browse button and point to the **"watched"** folder's location 
+<img width="899" height="120" alt="Path" src="https://github.com/user-attachments/assets/fe2ae21d-c0ee-4a80-8937-3c0e81149ab5" />
 
-## Run the tool:
-   * Windows Power Shell:```python file_integrity_monitor.py```
-   * Mac/Linux Terminal:```python3 file_integrity_monitor.py```
 
-## Create the Baseline JSON
-1. Click **Create Baseline** and verify by reviewing the output.
+### Create the Baseline JSON
+5. Ensure data files are finalized and approved
+6. Click **Create Baseline** and verify by reviewing the output
+<img width="441" height="19" alt="4_BaselineCreated" src="https://github.com/user-attachments/assets/6c269871-8665-42c3-8cfb-cdaee330aaa4" />
 
-   <img width="441" height="35" alt="4_BaselineCreated" src="https://github.com/user-attachments/assets/f1333378-f22a-467b-af45-878c80336992" />
 
-## Monitering
-1. Click **Start Monitoring**.
+### Start Monitoring
+7. Click **Start Monitoring**
+<img width="899" height="409" alt="5_StartMonitering" src="https://github.com/user-attachments/assets/bc5fd41f-a0bb-4f17-8b57-ae299130d05f" />
 
-   <img width="899" height="409" alt="5_StartMonitering" src="https://github.com/user-attachments/assets/1e7d4e82-a934-43e0-9df0-3e9bd1e06ebc" />
+8. In the Output, look for the tool scanning messages to verify
+<img width="672" height="42" alt="Screenshot 2026-06-21 at 20 55 19" src="https://github.com/user-attachments/assets/6d96ebd0-3f60-4114-9c90-638c8a4cb292" />
 
-## Discovery & Escalation
-1. When the tool reports a modification, the changes will appear in red text.
+### Discovery & Escalation
+9. When the file data has been changed:
 
-   <img width="757" height="609" alt="6_ChangesAlert" src="https://github.com/user-attachments/assets/74b41449-76f2-41cb-ab1b-cee4e711679f" />
+   * File change will be indicated in the Dashboard Counters
+     <img width="355" height="43" alt="Screenshot 2026-06-21 at 20 15 45" src="https://github.com/user-attachments/assets/7f5e78c0-69c6-4322-ad9a-b02eaec8a150" />
+    
+   * The changes will appear in red text
+     <img width="757" height="609" alt="6_ChangesAlert" src="https://github.com/user-attachments/assets/b65cffdb-1fec-4826-b7a0-3089d647cb6a" />
 
-2. Review the event log and proceed with the appropriate escalation protocol
-
-   <img width="898" height="119" alt="7_ActionsOptions" src="https://github.com/user-attachments/assets/9366c351-0114-4c05-ba0f-fd65ba42495c" />
+10. Submit a **Review Note** *(Optional)* to note in the Output that you observed the alert and escalating following protocol standards 
   
-3. Once the action is approved, choose the instructed response Action:
+11. Once the solution is found and approved, choose the instructed response Action:
 
-   
-   
-   <img width="528" height="208" alt="8_Opt1_1Revert_All_Change" src="https://github.com/user-attachments/assets/c5cc1592-40ff-4382-99ea-419ad62ad280" />
+    <img width="528" height="208" alt="8_Opt1_1Revert_All_Change" src="https://github.com/user-attachments/assets/c5cc1592-40ff-4382-99ea-419ad62ad280" />
      
      _Once reverted, an output message will appear_
       
