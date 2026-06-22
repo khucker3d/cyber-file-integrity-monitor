@@ -1,4 +1,4 @@
-# File Integrity Monitor (V1)
+# File Integrity Monitor (WIP - V1)
 <img width="672" height="336" alt="Tool" src="https://github.com/user-attachments/assets/885db408-7e67-466d-8a24-1e3510056709" />
 
 
@@ -209,4 +209,26 @@ Check:
 * Add unit tests.
 * Add a config file.
 
-_This project is designed to demonstrate Blue Team fundamentals in a practical desktop application._
+* V2 Stability and performance
+* Add ignore rules
+* Add metadata pre-check before hashing
+* Add last scan time
+* Add debug mode toggle
+
+V3 Better JSON support
+* Detect changed JSON fields
+* Add JSON key overwrite
+* Mask sensitive fields
+* Add severity scoring
+
+V4 Security hardening
+* HMAC-sign baseline
+* Add binary backup/restore
+* Add encrypted snapshots option
+
+V5 Portfolio polish
+* Export incident report
+* Add table view
+* Add screenshots
+* Add unit tests
+* Package as an app
